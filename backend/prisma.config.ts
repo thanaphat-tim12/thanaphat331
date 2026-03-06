@@ -4,10 +4,10 @@ import 'dotenv/config';
 export default defineConfig({
     schema: 'prisma/schema.prisma',
     datasource: {
-        provider: 'postgresql',
         url: process.env.DATABASE_URL
     },
     migrations: {
-        seed: 'node prisma/seed.js'
+        // เปลี่ยนจาก 'node prisma/seed.js' เป็น 'ts-node prisma/seed.ts'
+        seed: 'ts-node prisma/seed.ts'
     }
 });
