@@ -21,6 +21,10 @@ async function main() {
             title: 'Cloud Deployment',
             description: 'Deploy Backend to Render and Frontend to Netlify',
         },
+        {
+            title: 'ธนภัทร ตาสาย 6604101331',
+            description: 'Deploy Backend to Render and Frontend to Netlify',
+        },
     ];
 
     for (const t of initialTasks) {
