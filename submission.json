@@ -1,0 +1,11 @@
+{
+    "student_id": "6604101331",
+    "name": "ธนภัทร ตาสาย",
+    "github_repo": "https://github.com/thanaphat-tim12/thanaphat331",
+    "backend_base_url": "https://thanaphat331.onrender.com",
+    "frontend_url": "https://6604101331.netlify.app",
+    "api": {
+        "health": "https://thanaphat331.onrender.com/api/health",
+        "tasks": "https://thanaphat331.onrender.com/api/tasks"
+    }
+}
