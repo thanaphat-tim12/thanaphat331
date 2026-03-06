@@ -1,15 +1,14 @@
-// src/prisma.ts
 import { PrismaClient } from '@prisma/client';
 
 const globalForPrisma = globalThis as unknown as {
   prisma?: PrismaClient;
 };
 
-// ใช้แบบมาตรฐาน ไม่ต้องมี adapter
+// แก้ให้เหลือแค่นี้พอครับ ไม่ต้องใส่ adapter หรือค่าอื่นๆ
 export const prisma =
   globalForPrisma.prisma ??
   new PrismaClient({
-    log: ['query', 'info', 'warn', 'error'],
+    log: ['error', 'warn'],
   });
 
 if (process.env.NODE_ENV !== 'production') {
