@@ -25,7 +25,12 @@ if (!fs.existsSync(logsDir)) {
   fs.mkdirSync(logsDir, { recursive: true });
 }
 
-// demo endpoint เดิมจาก Lab 1.2
+// ✅ 1. เพิ่ม Health Check Endpoint ตามโจทย์ (20 คะแนน)
+app.get('/api/health', (_req, res) => {
+  res.json({ ok: true });
+});
+
+// 2. Demo endpoint เดิม
 app.get('/api/demo', (req, res) => {
   const logMessage = `Request at ${new Date().toISOString()}: ${req.ip}\n`;
   fs.appendFileSync(path.join(logsDir, 'access.log'), logMessage);
@@ -33,18 +38,16 @@ app.get('/api/demo', (req, res) => {
   res.json({
     git: {
       title: 'Advanced Git Workflow',
-      detail:
-        'ใช้ branch protection บน GitHub, code review ใน PR, และ squash merge เพื่อ history สะอาด',
+      detail: 'ใช้ branch protection บน GitHub, code review ใน PR, และ squash merge',
     },
     docker: {
       title: 'Advanced Docker',
-      detail:
-        'ใช้ multi-stage build, healthcheck ใน Dockerfile, และ orchestration ด้วย Compose/Swarm',
+      detail: 'ใช้ multi-stage build, healthcheck ใน Dockerfile',
     },
   });
 });
 
-// health check root
+// 3. Root path
 app.get('/', (_req, res) => {
   res.json({
     message: 'API พร้อมใช้งาน (Supabase + Prisma + Quasar Frontend)',
@@ -52,10 +55,10 @@ app.get('/', (_req, res) => {
   });
 });
 
-// Task API (Lab 2.1)
+// ✅ 4. Task API (ดึงข้อมูลจาก Database จริง)
 app.use('/api/tasks', taskRoutes);
 
-// ✅ fallback 404 สำหรับทุก route ที่ไม่ match
+// ✅ 5. fallback 404 สำหรับทุก route ที่ไม่ match
 app.use((req, res) => {
   res.status(404).json({
     message: 'ไม่พบเส้นทาง',
